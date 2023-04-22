@@ -36,26 +36,10 @@ class BetCreateViewTestCase(APITestCase):
         user = User.objects.create(id='test_id1', email='test1@example.com')
         data = {
             'user': user.id,
-            'game1': 'test1',
-            'game2': 'test2',
-            'game3': 'test3',
-            'game4': 'test4',
-            'game5': 'test5',
-            'game6': 'test6',
-            'game7': 'test7',
-            'game8': 'test8',
-            'game9': 'test9'
+            'order': 'first place*second place*third place'
         }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data, data)
         self.assertEqual(data['user'], data['user'])
-        self.assertEqual(data['game1'], data['game1'])
-        self.assertEqual(data['game2'], data['game2'])
-        self.assertEqual(data['game3'], data['game3'])
-        self.assertEqual(data['game4'], data['game4'])
-        self.assertEqual(data['game5'], data['game5'])
-        self.assertEqual(data['game6'], data['game6'])
-        self.assertEqual(data['game7'], data['game7'])
-        self.assertEqual(data['game8'], data['game8'])
-        self.assertEqual(data['game9'], data['game9'])
+        self.assertEqual(data['order'], data['order'])

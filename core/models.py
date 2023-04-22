@@ -16,15 +16,7 @@ class User(Model):
 
 class Bet(Model):
     user = OneToOneField(User, on_delete=CASCADE)
-    game1 = CharField(max_length=256)
-    game2 = CharField(max_length=256)
-    game3 = CharField(max_length=256)
-    game4 = CharField(max_length=256)
-    game5 = CharField(max_length=256)
-    game6 = CharField(max_length=256)
-    game7 = CharField(max_length=256)
-    game8 = CharField(max_length=256)
-    game9 = CharField(max_length=256)
+    order = CharField(max_length=4096)
 
     def __str__(self):
         return f"{self.user.email}"

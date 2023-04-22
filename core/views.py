@@ -1,6 +1,6 @@
 """All User API views."""
-from rest_framework.generics import ListAPIView, CreateAPIView
-from .serializers import UserCreateSerializer, UserListSerializer, BetCreateSerializer
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
+from .serializers import UserCreateSerializer, UserListSerializer, BetSerializer
 from .models import User, Bet
 
 
@@ -19,4 +19,11 @@ class UserListView(ListAPIView):
 class BetCreateView(CreateAPIView):
     """Creates a Bet."""
     queryset = Bet.objects.all()
-    serializer_class = BetCreateSerializer
+    serializer_class = BetSerializer
+
+
+class BetRetrieveView(RetrieveAPIView):
+    """Retrieves a Bet."""
+    queryset = Bet.objects.all()
+    serializer_class = BetSerializer
+    lookup_field = 'user'

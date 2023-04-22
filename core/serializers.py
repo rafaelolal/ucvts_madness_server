@@ -26,10 +26,8 @@ class UserListSerializer(serializers.ModelSerializer):
         return obj.email
 
 
-class BetCreateSerializer(serializers.ModelSerializer):
-    """Used by Bet create view."""
+class BetSerializer(serializers.ModelSerializer):
+    """Used by Bet create and retrieve view."""
     class Meta:
         model = Bet
-        fields = ['user', 'game1', 'game2',
-                  'game3', 'game4', 'game5',
-                  'game6', 'game7', 'game8', 'game9', ]
+        fields = ['user', 'order']
