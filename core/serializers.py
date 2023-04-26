@@ -1,6 +1,6 @@
-"""All User serializers."""
+"""All serializers."""
 from rest_framework import serializers
-from .models import User, Bet
+from .models import User, Bet, GameCount
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -31,3 +31,10 @@ class BetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bet
         fields = ['user', 'order']
+
+
+class GameCountSerializer(serializers.ModelSerializer):
+    """Used by GameCount create and retrieve view."""
+    class Meta:
+        model = GameCount
+        fields = ['count']

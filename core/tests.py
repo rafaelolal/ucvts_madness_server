@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient
-from .models import User, Bet
+from .models import User
 from .serializers import UserListSerializer
 
 
@@ -30,7 +30,7 @@ class UserViewTests(APITestCase):
         self.assertEqual(response.data, serializer.data)
 
 
-class BetCreateViewTestCase(APITestCase):
+class BetViewTests(APITestCase):
     def test_create_bet(self):
         url = reverse('bet-create')
         user = User.objects.create(id='test_id1', email='test1@example.com')
@@ -41,5 +41,14 @@ class BetCreateViewTestCase(APITestCase):
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data, data)
-        self.assertEqual(data['user'], data['user'])
-        self.assertEqual(data['order'], data['order'])
+
+
+class LeaderboardViewTests(APITestCase):
+    def test_update_leaderboard(self):
+        url = reverse('leaderboard-update')
+        data = {
+            'count': 0,
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.data, data)

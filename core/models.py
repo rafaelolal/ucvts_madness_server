@@ -20,3 +20,7 @@ class Bet(Model):
 
     def __str__(self):
         return f"{self.user.email}"
+
+
+class GameCount(Model):
+    count = PositiveSmallIntegerField()
