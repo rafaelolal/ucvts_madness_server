@@ -24,3 +24,6 @@ class Bet(Model):
 
 class GameCount(Model):
     count = PositiveSmallIntegerField()
+
+    def __str__(self):
+        return f"Count: {self.count}"
